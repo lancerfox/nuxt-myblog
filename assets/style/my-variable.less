@@ -1,0 +1,24 @@
+@home: home-index;//首页class变量
+@font-family: Helvetica,//字体风格
+Arial,
+"Hiragino Sans GB",
+"Microsoft Yahei",
+"微软雅黑",
+STHeiti,
+"华文细黑",
+sans-serif;
+
+// 字数超出，出现省略号
+.notwrap {
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+// 字数超出n行，出现省略号
+.wrap-2line(@n){
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @n;
+}
