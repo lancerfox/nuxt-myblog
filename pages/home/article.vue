@@ -17,14 +17,12 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
 import homepage from '../../components/home-index'
+import api from '../../api/index'
 export default {
   async asyncData({ route }) {
     let id = route.query.id
-    let res = await axios.get(
-      'http://127.0.0.1:7001/api/v1/article' + '?id=' + id
-    )
+    const res = await api.get_article(id)
     if (res.data.error === 1) {
       return {
         noarticle: true,
