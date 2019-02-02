@@ -2,6 +2,7 @@
   <div class="home">
     <homepage :name="changename"></homepage>
     <div class="home-right">
+      <div v-show="noarticle">没有找到相关内容~~~~~~~</div>
       <div class="article-list-wrap">
         <div class="article-list" v-for="(item,index) in dataList" :key="index">
           <div class="article-title">{{item.article_title}}</div>
@@ -19,25 +20,22 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
 import homepage from '../../components/home-index'
 import Page from '../../components/page'
+import api from '../../api/index'
 export default {
   async asyncData({ route }) {
     let currentPage = route.query.currentPage
-    console.log(currentPage)
-    let res = await axios.get(
-      'http://127.0.0.1:7001/api/v1/article/articles' +
-        '?currentPage=' +
-        currentPage
-    )
+    let res = await api.get_articlelist(currentPage)
     if (res.data.error === 1) {
       return {
+        noarticle: true,
         dataList: [],
         pagetotal: 1
       }
     }
     return {
+      noarticle: false,
       dataList: res.data.article_list,
       pagetotal: res.data.count
     }
@@ -78,7 +76,6 @@ export default {
   margin-left: 30%;
   height: 100%;
   overflow-y: auto;
-  // background: rgb(211, 18, 108);
 }
 
 .article-list-wrap {
