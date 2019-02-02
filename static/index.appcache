@@ -1,0 +1,8 @@
+CACHE MANIFEST
+#需要缓存的内容 v1.0.0 2019年2月2日 23:30:04
+/_nuxt/static/jason-leung-479251-unsplash.jpg
+/_nuxt/static/mypersonimg.jpg
+/_nuxt/static/font-awesome/fonts/fontawesome-webfont.woff2
+#*号表示其他内容不缓存
+NETWORK:
+*
